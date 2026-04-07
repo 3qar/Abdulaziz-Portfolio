@@ -1,0 +1,102 @@
+// ===============================================================
+// Assumed Data Model
+// ===============================================================
+//
+// Collection: projects
+// Document ID: auto-generated
+// Fields:
+//   - title: string (required, 1-100 chars)
+//   - type: string (required, 1-50 chars)
+//   - problem: string (required, 1-1000 chars)
+//   - solution: string (required, 1-1000 chars)
+//   - tools: list of strings (required, max 20 items, each < 50 chars)
+//   - result: string (required, 1-200 chars)
+//   - image: string (required, valid URL, < 500 chars)
+//   - details: string (optional, < 5000 chars)
+//   - location: string (optional, < 100 chars)
+//   - date: string (optional, < 50 chars)
+//   - design: string (optional, enum: ['classic', 'modern', 'gallery'])
+//   - additionalImages: list of strings (optional, max 10 items, each < 500 chars)
+//   - authorUid: string (required, matches creator)
+//   - createdAt: timestamp (required)
+//
+// ===============================================================
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+          (request.auth.token.email == "azooz.msf@gmail.com" && request.auth.token.email_verified == true));
+    }
+
+    function isValidUrl(url) {
+      return url is string && (url.matches("^https://.*") || url.matches("^http://.*"));
+    }
+
+    function isValidProject(data) {
+      return data.keys().hasAll(['title', 'type', 'problem', 'solution', 'tools', 'result', 'image', 'authorUid', 'createdAt']) &&
+             data.title is string && data.title.size() >= 1 && data.title.size() <= 100 &&
+             data.type is string && data.type.size() >= 1 && data.type.size() <= 50 &&
+             data.problem is string && data.problem.size() >= 1 && data.problem.size() <= 1000 &&
+             data.solution is string && data.solution.size() >= 1 && data.solution.size() <= 1000 &&
+             data.tools is list && data.tools.size() <= 20 &&
+             data.result is string && data.result.size() >= 1 && data.result.size() <= 200 &&
+             isValidUrl(data.image) && data.image.size() <= 500 &&
+             (!('details' in data) || (data.details is string && data.details.size() <= 5000)) &&
+             (!('location' in data) || (data.location is string && data.location.size() <= 100)) &&
+             (!('date' in data) || (data.date is string && data.date.size() <= 50)) &&
+             (!('design' in data) || (data.design in ['classic', 'modern', 'gallery'])) &&
+             (!('additionalImages' in data) || (data.additionalImages is list && data.additionalImages.size() <= 10)) &&
+             data.authorUid is string && data.authorUid == request.auth.uid &&
+             data.createdAt is timestamp;
+    }
+
+    function uidNotModified() {
+      return request.resource.data.authorUid == resource.data.authorUid;
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /projects/{projectId} {
+      // Portfolio projects should be publicly readable
+      allow read: if true;
+      
+      // Only authenticated users can create projects
+      allow create: if isAuthenticated() && isValidProject(request.resource.data);
+      
+      // Only the owner or an admin can update or delete projects
+      allow update: if (isOwner(resource.data.authorUid) || isAdmin()) && 
+                       isValidProject(request.resource.data) && 
+                       uidNotModified();
+                       
+      allow delete: if isOwner(resource.data.authorUid) || isAdmin();
+    }
+
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow write: if isOwner(userId) && (!('role' in request.resource.data) || request.resource.data.role == resource.data.role || isAdmin());
+    }
+    
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Trash2 } from 'lucide-react';
 import { cn } from '../lib/utils';
+import { auth } from '../firebase';
 
 interface ProjectCardProps {
   project: {
@@ -15,16 +16,24 @@ interface ProjectCardProps {
     image: string;
   };
   index: number;
+  onClick?: () => void;
+  onDelete?: (e: React.MouseEvent) => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onClick, onDelete }) => {
+  const isAdmin = auth.currentUser?.email === "azooz.msf@gmail.com";
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className="group bg-white border border-brand-200 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-500 flex flex-col h-full"
+      onClick={onClick}
+      className={cn(
+        "group bg-white border border-brand-200 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-500 flex flex-col h-full",
+        onClick && "cursor-pointer"
+      )}
     >
       <div className="relative h-64 overflow-hidden">
         <img
@@ -72,6 +81,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
             <button className="text-brand-900 hover:text-brand-600 transition-colors">
               <ExternalLink className="w-5 h-5" />
             </button>
+            {isAdmin && onDelete && (
+              <button 
+                onClick={onDelete}
+                className="text-red-400 hover:text-red-600 transition-colors p-2"
+                title="Delete Project"
+              >
+                <Trash2 className="w-5 h-5" />
+              </button>
+            )}
           </div>
         </div>
       </div>

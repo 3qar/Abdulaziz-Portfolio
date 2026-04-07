@@ -103,7 +103,7 @@ export default function Home() {
             </div>
             <div className="absolute -bottom-8 -left-4 sm:-left-8 bg-white p-6 sm:p-8 rounded-2xl shadow-2xl border border-brand-100 max-w-[240px] sm:max-w-xs">
               <p className="text-brand-900 font-bold text-base sm:text-lg mb-2 italic">"Engineering is not just about calculations; it's about solving real-world problems efficiently."</p>
-              <p className="text-brand-500 text-[10px] font-bold uppercase tracking-widest">— Lead Engineer</p>
+              <p className="text-brand-500 text-[10px] font-bold uppercase tracking-widest">— ENG Abdulaziz Kanaan</p>
             </div>
           </div>
         </div>
@@ -121,7 +121,7 @@ export default function Home() {
               Start a Conversation
             </Link>
             <a
-              href="mailto:engineer@example.com"
+              href="mailto:Abdulazizkanan@hotmail.com"
               className="bg-white text-brand-900 border border-brand-200 px-10 py-4 rounded-lg font-bold text-lg hover:bg-brand-50 transition-all active:scale-95"
             >
               Send Email

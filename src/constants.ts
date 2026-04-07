@@ -8,9 +8,9 @@ export const ROUTES = {
 };
 
 export const CONTACT_INFO = {
-  WHATSAPP: 'https://wa.me/966500000000', // Placeholder
-  EMAIL: 'engineer@example.com',
-  LOCATION: 'Riyadh, Saudi Arabia',
+  WHATSAPP: 'https://wa.me/9665633056163',
+  EMAIL: 'Abdulazizkanan@hotmail.com',
+  LOCATION: 'Jeddah, Saudi Arabia',
 };
 
 export const SERVICES = [
@@ -54,14 +54,22 @@ export const SERVICES = [
 
 export const PROJECTS = [
   {
-    id: 'luxury-villa-structural-design',
-    title: 'Luxury Villa Structural Design',
-    type: 'Residential',
-    problem: 'Complex architectural spans with minimal column interference.',
-    solution: 'Implemented a post-tensioned slab system to achieve 12m clear spans.',
-    tools: ['ETABS', 'SAFE', 'AutoCAD'],
-    result: '15% reduction in concrete volume and 100% architectural compliance.',
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800',
+    id: 'al-balad-restoration',
+    title: 'Heritage Area Restoration Project Al-Balad',
+    type: 'Restoration',
+    problem: 'Restoring historical buildings while preserving heritage aesthetic.',
+    solution: 'Technical office supervision, shop drawings, and structural safety verification using ETABS and SAP2000.',
+    tools: ['ETABS', 'SAP2000', 'AutoCAD'],
+    result: 'Ongoing restoration serving tourism and general aesthetic goals.',
+    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=800',
+    details: 'This project involves the comprehensive structural restoration of over 300 historical buildings in the Al-Balad district of Jeddah. Our team is responsible for creating detailed shop drawings, performing structural safety checks, and designing temporary support systems like scaffolding and steel bracing to ensure the safety of these heritage structures during renovation.',
+    location: 'Al-Balad, Jeddah, Saudi Arabia',
+    date: 'Aug 2025 - Present',
+    design: 'classic' as const,
+    additionalImages: [
+      'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&q=80&w=800',
+      'https://images.unsplash.com/photo-1590644365607-1c5a519a7a37?auto=format&fit=crop&q=80&w=800'
+    ]
   },
   {
     id: 'commercial-complex-retrofit',
@@ -70,8 +78,15 @@ export const PROJECTS = [
     problem: 'Structural cracks discovered in primary beams due to overloading.',
     solution: 'Designed Carbon Fiber Reinforced Polymer (CFRP) strengthening system.',
     tools: ['SAP2000', 'Hilti Profis'],
-    result: 'Restored structural integrity without increasing dead weight or footprint.',
+    result: 'Restored structural integrity without increasing dead weight.',
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800',
+    details: 'A critical structural intervention for a major commercial complex. After discovering significant cracking in the primary support beams, we performed a full structural audit and designed a CFRP strengthening solution. This approach allowed for the restoration of the building\'s load-bearing capacity without the need for bulky traditional reinforcement methods.',
+    location: 'Jeddah, Saudi Arabia',
+    date: 'Jan 2024 - Jun 2024',
+    design: 'modern' as const,
+    additionalImages: [
+      'https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&q=80&w=800'
+    ]
   },
   {
     id: 'high-rise-scaffolding-system',
@@ -82,11 +97,18 @@ export const PROJECTS = [
     tools: ['AutoCAD', 'Structural Analysis'],
     result: 'Zero safety incidents and 20% faster facade installation.',
     image: 'https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&q=80&w=800',
+    details: 'Designed a custom temporary structural system for a 40-story high-rise. Due to limited ground space and unstable soil conditions, traditional scaffolding was not feasible. We engineered a series of cantilevered steel platforms that provided a safe working environment for facade installation while minimizing the impact on the ground-level site operations.',
+    location: 'Riyadh, Saudi Arabia',
+    date: 'Mar 2023 - Dec 2023',
+    design: 'gallery' as const,
+    additionalImages: [
+      'https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=800'
+    ]
   },
 ];
 
 export const SKILLS = {
-  SOFTWARE: ['ETABS', 'SAFE', 'AutoCAD', 'SAP2000', 'Revit', 'Prokon'],
-  ENGINEERING: ['Load Calculations', 'Structural Analysis', 'Concrete Design', 'Steel Design', 'Foundation Design'],
-  SITE: ['Execution Supervision', 'Inspection', 'Problem-solving', 'Quality Control'],
+  SOFTWARE: ['SAP2000', 'AutoCAD', 'ETABS', 'MS Office'],
+  ENGINEERING: ['Structural Design', 'Site Engineering', 'Structural Analysis', 'Shop Drawings', 'Retrofitting'],
+  SITE: ['Site Inspection', 'Crack Repair', 'Formwork Setup', 'Quality Control'],
 };

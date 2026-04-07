@@ -51,13 +51,8 @@ export default function Hero() {
             className="mt-16 flex items-center gap-8 border-t border-brand-200 pt-8"
           >
             <div>
-              <p className="text-3xl font-bold text-brand-900">5+</p>
-              <p className="text-xs text-brand-500 uppercase tracking-wider font-semibold">Years Experience</p>
-            </div>
-            <div className="w-px h-10 bg-brand-200" />
-            <div>
-              <p className="text-3xl font-bold text-brand-900">30+</p>
-              <p className="text-xs text-brand-500 uppercase tracking-wider font-semibold">Projects Delivered</p>
+              <p className="text-3xl font-bold text-brand-900">1+</p>
+              <p className="text-xs text-brand-500 uppercase tracking-wider font-semibold">Year Experience</p>
             </div>
             <div className="w-px h-10 bg-brand-200" />
             <div>

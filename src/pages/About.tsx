@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Award, BookOpen, Briefcase, GraduationCap } from 'lucide-react';
+import { Award, BookOpen, Briefcase, Download, GraduationCap } from 'lucide-react';
 import { SKILLS } from '../constants';
 
 export default function About() {
@@ -9,41 +9,47 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-32">
           <div>
             <span className="text-brand-500 font-bold uppercase tracking-widest text-xs mb-4 block">About Me</span>
-            <h1 className="text-5xl md:text-6xl font-bold text-brand-900 mb-8">Engineering Precision with a Practical Edge</h1>
+            <h1 className="text-5xl md:text-6xl font-bold text-brand-900 mb-8">ENG Abdulaziz Kanaan</h1>
             <p className="text-xl text-brand-600 leading-relaxed mb-8">
-              I am a Civil Engineer dedicated to the art and science of structural design. My approach combines rigorous mathematical analysis with deep on-site experience to deliver solutions that are not only safe but also buildable and cost-effective.
+              I am a Civil Engineering graduate from Istanbul Gelişim University, specializing in structural design and site engineering. My approach combines rigorous technical analysis with hands-on experience in historical restoration and modern construction.
             </p>
             <p className="text-brand-600 leading-relaxed mb-10">
-              Over the past 5 years, I have worked on a diverse range of projects, from high-end residential villas to complex commercial retrofitting. I believe that every structural challenge has an optimal solution waiting to be engineered.
+              Currently, I am part of the technical office for the Heritage Area Restoration Project in Al-Balad, Jeddah, where I contribute to the structural preservation of historical buildings. I am passionate about applying advanced engineering software to solve complex real-world challenges.
             </p>
             
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 mb-10">
               <div className="bg-brand-50 px-6 py-4 rounded-2xl border border-brand-100">
-                <p className="text-3xl font-bold text-brand-900 mb-1">30+</p>
-                <p className="text-xs text-brand-500 font-bold uppercase tracking-widest">Projects</p>
-              </div>
-              <div className="bg-brand-50 px-6 py-4 rounded-2xl border border-brand-100">
-                <p className="text-3xl font-bold text-brand-900 mb-1">5+</p>
-                <p className="text-xs text-brand-500 font-bold uppercase tracking-widest">Years</p>
-              </div>
-              <div className="bg-brand-50 px-6 py-4 rounded-2xl border border-brand-100">
-                <p className="text-3xl font-bold text-brand-900 mb-1">100%</p>
-                <p className="text-xs text-brand-500 font-bold uppercase tracking-widest">Success</p>
+                <p className="text-3xl font-bold text-brand-900 mb-1">1+</p>
+                <p className="text-xs text-brand-500 font-bold uppercase tracking-widest">Year Exp</p>
               </div>
             </div>
+
+            <a 
+              href="https://drive.google.com/file/d/1m5LKEbgeg6szlsOxkSsb2EJ-IUgfIfEx/view?usp=sharing" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-brand-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-brand-800 transition-all shadow-lg shadow-brand-900/10 active:scale-95"
+            >
+              <Download className="w-5 h-5" />
+              Open Full CV
+            </a>
           </div>
           
           <div className="relative">
-            <div className="aspect-[4/5] bg-brand-200 rounded-3xl overflow-hidden">
+            <div className="aspect-[4/5] bg-brand-200 rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1000"
-                alt="Engineer Profile"
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                src="/profile.jpg"
+                alt="ENG Abdulaziz Kanaan"
+                className="w-full h-full object-cover transition-all duration-700"
+                onError={(e) => {
+                  // Fallback to a professional placeholder if the local file isn't found
+                  (e.target as HTMLImageElement).src = "https://image2url.com/r2/default/images/1775555210966-56bd412c-cc13-4f4b-8077-0c45ecc95881.jpeg";
+                }}
                 referrerPolicy="no-referrer"
               />
             </div>
             <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 w-24 h-24 sm:w-32 sm:h-32 bg-brand-900 rounded-full flex items-center justify-center text-white text-center p-3 sm:p-4 shadow-2xl">
-              <p className="text-[8px] sm:text-[10px] font-bold uppercase tracking-widest">Certified Structural Engineer</p>
+              <p className="text-[8px] sm:text-[10px] font-bold uppercase tracking-widest">Bachelor in Civil Engineering</p>
             </div>
           </div>
         </div>
@@ -100,22 +106,22 @@ export default function About() {
           <div className="max-w-3xl mx-auto space-y-12">
             {[
               {
-                year: '2022 — Present',
-                role: 'Senior Structural Engineer',
-                company: 'Leading Engineering Firm',
-                desc: 'Leading structural design for multi-story residential and commercial projects. Managing site inspections and retrofitting consultations.'
+                year: '2025 Aug — Present',
+                role: 'Technical Office Engineer',
+                company: 'IKK GROUP | Al-Balad Restoration Project',
+                desc: 'Leading structural shop drawings and safety verification for the restoration of historical buildings. Specialized in scaffolding design and temporary steel bracing.'
               },
               {
-                year: '2019 — 2022',
-                role: 'Structural Design Engineer',
-                company: 'Design & Consultancy Group',
-                desc: 'Specialized in post-tensioned slab design and seismic analysis for high-rise buildings.'
+                year: '2024 Jul — 2024 Sep',
+                role: 'Site Internship',
+                company: 'IKK Group | UNESCO Historical Renovation',
+                desc: 'Hands-on experience in structural repair, reinforcement, and foundation treatment for heritage concrete buildings under UNESCO standards.'
               },
               {
-                year: '2018 — 2019',
-                role: 'Site Engineer',
-                company: 'Construction Contracting Co.',
-                desc: 'Supervised execution of structural elements on-site, ensuring strict adherence to shop drawings and quality standards.'
+                year: '2023 Aug — 2023 Sep',
+                role: 'Office Internship',
+                company: 'Fatima Khalil Mahmoud Akkari Architectural Contracting',
+                desc: 'Focused on structural design using AutoCAD and ETABS, creating detailed reinforcement drawings and modeling structural elements.'
               }
             ].map((item, i) => (
               <div key={i} className="flex flex-col sm:flex-row gap-2 sm:gap-8 relative">

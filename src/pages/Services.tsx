@@ -32,8 +32,7 @@ export default function Services() {
                   'ACI 318 (Concrete Design)',
                   'ASCE 7 (Loads)',
                   'AISC (Steel Design)',
-                  'ASTM Standards',
-                  'BS Standards'
+                  'ASTM Standards'
                 ].map((code) => (
                   <div key={code} className="flex items-center gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-brand-400" />

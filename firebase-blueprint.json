@@ -1,0 +1,32 @@
+{
+  "entities": {
+    "Project": {
+      "title": "Project",
+      "description": "A structural engineering project in the portfolio.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "The title of the project." },
+        "type": { "type": "string", "description": "The category of the project (e.g., Restoration, Residential)." },
+        "problem": { "type": "string", "description": "The structural challenge faced." },
+        "solution": { "type": "string", "description": "The engineering solution implemented." },
+        "tools": { "type": "array", "items": { "type": "string" }, "description": "Software or tools used." },
+        "result": { "type": "string", "description": "The key outcome or achievement." },
+        "image": { "type": "string", "description": "URL of the main project image." },
+        "details": { "type": "string", "description": "A detailed description of the project." },
+        "location": { "type": "string", "description": "The geographical location of the project." },
+        "date": { "type": "string", "description": "The project timeline (e.g., Aug 2025 - Present)." },
+        "design": { "type": "string", "enum": ["classic", "modern", "gallery"], "description": "The layout design for the project detail page." },
+        "additionalImages": { "type": "array", "items": { "type": "string" }, "description": "URLs of additional project images." },
+        "authorUid": { "type": "string", "description": "The UID of the user who added the project." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the project was added." }
+      },
+      "required": ["title", "type", "problem", "solution", "result", "image", "authorUid", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/projects/{projectId}": {
+      "schema": "Project",
+      "description": "A collection of engineering projects."
+    }
+  }
+}
